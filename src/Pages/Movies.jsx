@@ -3,6 +3,7 @@ import MovieSearch from '../Components/MovieSearch/MovieSearch';
 import axios from 'axios';
 import MovieCard from '../Components/MovieCards/MovieCard';
 import MovieDetails from '../Components/MovieDetails/MovieDetails';
+import Pagination from '../Components/Pagination/Pagination';
 
 
 const Movies = () => {
@@ -10,12 +11,29 @@ const Movies = () => {
     const [result, setResult] = useState([]);
     const [error, setError] = useState(null);
 
-    const [movieSelect,setmovieSelect] = useState(false)
+    const [movieSelect, setmovieSelect] = useState(false)
     const [movieDetails, setMovieDetails] = useState({})
+    const [currentPage, setcurrentPage] = useState(1);
+    const [totalPage, setTotalPage] = useState(null)
+
+    const handleNext = () => {
+        if (currentPage >= totalPage) {
+            setcurrentPage(1)
+        } else {
+            setcurrentPage(currentPage => currentPage + 1)
+        }
+
+    }
+
+    const handlePrev = () => {
+        if (currentPage <= 1) {
+            setcurrentPage(totalPage)
+        } else {
+            setcurrentPage(currentPage => currentPage - 1)
+        }
+    }
 
     const handleClick = async (id) => {
-        // console.log("Movie Clicked",ele)
-
         setmovieSelect(true)
         await axios.get(`https://omdbapi.com/?apiKey=38519d97&i=${id}&plot=full`).then((res) => {
             setMovieDetails(res.data)
@@ -27,8 +45,10 @@ const Movies = () => {
     }
 
     const getData = async () => {
-        await axios.get(`https://www.omdbapi.com/?apiKey=38519d97&s=${query}`).then((res) => {
+        await axios.get(`https://www.omdbapi.com/?apiKey=38519d97&s=${query}&page=${currentPage}`).then((res) => {
             const data = res.data;
+            setTotalPage(Math.ceil(data.totalResults/10));
+            console.log(totalPage)
             if (data.Response === "True") {
                 setResult(data.Search)
                 setError(null)
@@ -46,22 +66,25 @@ const Movies = () => {
     useEffect(() => {
         getData();
         console.log(result)
-    }, [query])
+    }, [query, currentPage])
 
     return (
         <>
             <MovieSearch query={query} setQuery={setQuery} />
-            <MovieDetails movieSelect={movieSelect} movieDetails={movieDetails}/>
+            <MovieDetails movieSelect={movieSelect} movieDetails={movieDetails} />
 
             {
                 result.length > 0 ?
-                    <div className='movieContainer'>
-                        {
-                            result.map((ele, ind) => {
-                                return <MovieCard key={ind} data={ele} handleClick={handleClick} />
-                            })
-                        }
-                    </div>
+                    <>
+                        <div className='movieContainer'>
+                            {
+                                result.map((ele, ind) => {
+                                    return <MovieCard key={ind} data={ele} handleClick={handleClick} />
+                                })
+                            }
+                        </div>
+                        <Pagination handlePrev={handlePrev} handleNext={handleNext} currentPage={currentPage} />
+                    </>
                     :
                     <>
                     </>
