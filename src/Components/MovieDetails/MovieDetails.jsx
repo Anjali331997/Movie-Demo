@@ -1,28 +1,23 @@
-import React, { useEffect, useState } from 'react'
+// import React, { useEffect, useState } from 'react'
+// import { useEffect } from 'react'
 import './MovieDetails.css'
-import axios from 'axios'
+// import axios from 'axios'
 
-const MovieDetails = ({ id, movieClicked }) => {
-  const [movieData, setMovieData] = useState({})
+const MovieDetails = ({ movie, movieDetails }) => {
 
-  const getData = async () => {
-    await axios.get(`https://www.omdbapi.com/?apiKey=38519d97&i=${id}`).then((res) => {
-      const data = res.data;
-      console.log(data)
-    })
-
-  }
-  useEffect(() => {
-    getData
-      ()
-  }, [movieData])
   return (
     <>
       {
-        movieClicked ?
+        movie ?
           <div className='movieDetails'>
-
-          </div> : <><h1>hmmmm</h1></>
+            <img src={movieDetails.Poster} alt={movieDetails.Title} />
+            <h3>{movieDetails.Title}</h3>
+            <p>Director: {movieDetails.Director}</p>
+            <p>Actors: {movieDetails.Actors || 'N/A'}</p>
+            <p>{movieDetails.Plot}</p>
+            <h5>IMDb Rating: {movieDetails.imdbRating || 'N/A'}</h5>
+          </div> :
+          <></>
       }
     </>
   )

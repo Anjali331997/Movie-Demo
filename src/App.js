@@ -1,13 +1,13 @@
 import './App.css';
-import MovieDetails from './Components/MovieDetails/MovieDetails';
-import MovieSearch from './Components/MovieSearch/MovieSearch';
+import Movies from './Pages/Movies';
+
 
 
 function App() {
 
   return (
     <>
-      <MovieSearch/>
+      <Movies />
     </>
   );
 }
