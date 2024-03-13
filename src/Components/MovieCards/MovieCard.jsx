@@ -6,6 +6,7 @@ import './MovieCard.css'
 const MovieCard = ({ data ,handleClick}) => {
   return (
     <div> 
+
       <div key={data.imdbID} className="movie-card" onClick={()=>handleClick(data.imdbID)}>
         <img src={data.Poster} alt={data.Title} />
         <div>
@@ -14,6 +15,7 @@ const MovieCard = ({ data ,handleClick}) => {
           <p>IMDb Rating: {data.imdbRating || 'N/A'}</p>
         </div>
       </div>
+      
     </div>
   )
 }

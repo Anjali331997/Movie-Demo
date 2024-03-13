@@ -4,12 +4,14 @@ import axios from 'axios';
 import MovieCard from '../Components/MovieCards/MovieCard';
 import MovieDetails from '../Components/MovieDetails/MovieDetails';
 import Pagination from '../Components/Pagination/Pagination';
+import MovieContainer from '../Components/MovieContainer/MovieContainer';
 
 
 
 const Movies = () => {
     const [query, setQuery] = useState('');
     const [result, setResult] = useState([]);
+
     const [error, setError] = useState(null);
 
     const [movieSelect, setmovieSelect] = useState(false)
@@ -73,10 +75,7 @@ const Movies = () => {
     return (
         <>
             <MovieSearch query={query} setQuery={setQuery} />
-           
-           
             <MovieDetails movieSelect={movieSelect} movieDetails={movieDetails} />
-
             {
                 result.length > 0 ?
                     <>
@@ -101,6 +100,9 @@ const Movies = () => {
                     </>
             }
 
+
+            {/* <MovieSearch setQuery={setQuery} /> */}
+            {/* <MovieContainer query={query} setResult={setResult}/> */}
         </>
     )
 }
