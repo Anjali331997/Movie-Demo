@@ -5,7 +5,7 @@ import './MovieCard.css'
 
 const MovieCard = ({ data ,handleClick}) => {
   return (
-    <div>
+    <div> 
       <div key={data.imdbID} className="movie-card" onClick={()=>handleClick(data.imdbID)}>
         <img src={data.Poster} alt={data.Title} />
         <div>

@@ -50,7 +50,7 @@ const Movies = () => {
             const data = res.data;
             setTotalPage(Math.ceil(data.totalResults / 10));
             console.log(totalPage)
-            
+
             if (data.Response === "True") {
                 setResult(data.Search)
                 setError(null)
@@ -73,6 +73,8 @@ const Movies = () => {
     return (
         <>
             <MovieSearch query={query} setQuery={setQuery} />
+           
+           
             <MovieDetails movieSelect={movieSelect} movieDetails={movieDetails} />
 
             {
