@@ -1,0 +1,16 @@
+.movie-card {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    flex-direction: column;
+    border: 1px solid #312b2b;
+    height: 400px;
+    text-align: center;
+  }
+
+  .movie-card img{
+    width: 100%;
+    overflow: hidden;
+    object-fit: cover;
+    object-position: center;
+  }

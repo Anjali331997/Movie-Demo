@@ -1,0 +1,23 @@
+.inputComp {
+    width: 60%;
+    text-align: left;
+    height: 35px;
+    font-size: 20px;
+    display: block;
+    margin: auto;
+}
+
+.searchDiv {
+    width: 100%;
+    padding: 10px;
+    margin: auto;
+}
+
+.movieContainer{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    width: 90%;
+    margin: auto;
+    gap: 20px;
+}
+
