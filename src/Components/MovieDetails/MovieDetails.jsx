@@ -1,21 +1,19 @@
-// import React, { useEffect, useState } from 'react'
-// import { useEffect } from 'react'
 import './MovieDetails.css'
-// import axios from 'axios'
 
-const MovieDetails = ({ movie, movieDetails }) => {
+const MovieDetails = ({ movieSelect, movieDetails }) => {
 
   return (
     <>
       {
-        movie ?
+        movieSelect ?
           <div className='movieDetails'>
             <img src={movieDetails.Poster} alt={movieDetails.Title} />
             <h3>{movieDetails.Title}</h3>
+            <p>{movieDetails.Plot}</p> 
             <p>Director: {movieDetails.Director}</p>
-            <p>Actors: {movieDetails.Actors || 'N/A'}</p>
-            <p>{movieDetails.Plot}</p>
+            <p>Actors: {movieDetails.Actors || 'N/A'}</ p>
             <h5>IMDb Rating: {movieDetails.imdbRating || 'N/A'}</h5>
+
           </div> :
           <></>
       }

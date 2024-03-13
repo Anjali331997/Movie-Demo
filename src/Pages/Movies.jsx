@@ -10,15 +10,13 @@ const Movies = () => {
     const [result, setResult] = useState([]);
     const [error, setError] = useState(null);
 
-    // const [movieSelect,setmovieSelect] = useState(false)
-    const [movie, setMovie] = useState(false);
+    const [movieSelect,setmovieSelect] = useState(false)
     const [movieDetails, setMovieDetails] = useState({})
 
     const handleClick = async (id) => {
         // console.log("Movie Clicked",ele)
-        // setmovieSelect(true)
-        setMovie(true)
 
+        setmovieSelect(true)
         await axios.get(`https://omdbapi.com/?apiKey=38519d97&i=${id}&plot=full`).then((res) => {
             setMovieDetails(res.data)
             console.log(movieDetails)
@@ -53,7 +51,7 @@ const Movies = () => {
     return (
         <>
             <MovieSearch query={query} setQuery={setQuery} />
-            <MovieDetails movie={movie} movieDetails={movieDetails}/>
+            <MovieDetails movieSelect={movieSelect} movieDetails={movieDetails}/>
 
             {
                 result.length > 0 ?

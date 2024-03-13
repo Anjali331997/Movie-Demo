@@ -3,7 +3,7 @@
     align-items: center;
     cursor: pointer;
     flex-direction: column;
-    border: 1px solid #312b2b;
+    /* border: 1px solid #312b2b; */
     height: 400px;
     text-align: center;
   }
