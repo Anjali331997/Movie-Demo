@@ -11,6 +11,9 @@
     width: 100%;
     padding: 10px;
     margin: auto;
+    background-color: #ecd8cf;
+    margin-bottom: 20px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 .movieContainer{
@@ -21,3 +24,12 @@
     gap: 20px;
 }
 
+.searchDiv input{
+    border: 1px solid  #bd8b87;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+/* .searchDiv input:focus{
+    bo
+} */
