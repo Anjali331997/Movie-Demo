@@ -4,7 +4,7 @@ import axios from 'axios';
 import MovieCard from '../Components/MovieCards/MovieCard';
 import MovieDetails from '../Components/MovieDetails/MovieDetails';
 import Pagination from '../Components/Pagination/Pagination';
-// require('dotenv').config()
+
 
 
 const Movies = () => {
