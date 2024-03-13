@@ -8,8 +8,8 @@ const MovieSearch = () => {
   const [result, setResult] = useState([]);
   const [err, setError] = useState(null);
 
-  const getData = () => {
-    axios.get(`https://www.omdbapi.com/?apiKey=38519d97&s=${search}`).then((res) => {
+  const getData = async () => {
+    await axios.get(`https://www.omdbapi.com/?apiKey=38519d97&s=${search}`).then((res) => {
       const data = res.data;
       if (data.Response === "True") {
         setResult(data.Search)
@@ -45,6 +45,8 @@ const MovieSearch = () => {
                 return <MovieCard key={ind} data={ele} />
               })
             }
+
+
           </div>
           :
           <></>}

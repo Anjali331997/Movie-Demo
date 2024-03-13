@@ -1,11 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './MovieCard.css'
+import MovieDetails from '../MovieDetails/MovieDetails';
 
-const handleMovieClick=()=>{
-  console.log("Movie Clicked");
-}
 
 const MovieCard = ({ data }) => {
+  const [select, setSelect] = useState(false);
+
+  const handleMovieClick = (id) => {
+    console.log("Movie Clicked");
+    setSelect(true);
+    <MovieDetails id={id} movieClicked={select} />
+  }
+
   return (
     <div>
       <div key={data.imdbID} className="movie-card" onClick={() => handleMovieClick(data.imdbID)}>
