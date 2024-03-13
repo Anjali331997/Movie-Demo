@@ -48,8 +48,9 @@ const Movies = () => {
     const getData = async () => {
         await axios.get(`https://www.omdbapi.com/?apiKey=38519d97&s=${query}&page=${currentPage}`).then((res) => {
             const data = res.data;
-            setTotalPage(Math.ceil(data.totalResults/10));
+            setTotalPage(Math.ceil(data.totalResults / 10));
             console.log(totalPage)
+            
             if (data.Response === "True") {
                 setResult(data.Search)
                 setError(null)
@@ -80,11 +81,18 @@ const Movies = () => {
                         <div className='movieContainer'>
                             {
                                 result.map((ele, ind) => {
-                                    return <MovieCard key={ind} data={ele} handleClick={handleClick} />
+                                    return (
+                                        ele.Poster !== "N/A" ?
+                                            <MovieCard key={ind} data={ele}
+                                                handleClick={handleClick} />
+                                            : <></>)
                                 })
                             }
                         </div>
-                        <Pagination handlePrev={handlePrev} handleNext={handleNext} currentPage={currentPage} />
+                        <Pagination
+                            handlePrev={handlePrev}
+                            handleNext={handleNext}
+                            currentPage={currentPage} />
                     </>
                     :
                     <>
