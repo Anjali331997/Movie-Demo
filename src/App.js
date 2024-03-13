@@ -8,12 +8,13 @@ import MovieDetails from './Components/MovieDetails/MovieDetails';
 function App() {
 
   return (
-    <BrowserRouter>
-    <Routes>
-      <Route path='/' index element={<Movies/>}/>
-      <Route path='/movie/:if' index element={<MovieDetails/>}/>
-    </Routes>
-  </BrowserRouter>
+    <Movies/>
+  //   <BrowserRouter>
+  //   <Routes>
+  //     <Route path='/' index element={<Movies/>}/>
+  //     <Route path='/movie/:if' index element={<MovieDetails/>}/>
+  //   </Routes>
+  // </BrowserRouter>
   );
 }
 
